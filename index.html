@@ -157,6 +157,7 @@
     <canvas id="image-demo"></canvas>
   </div>
   <script>
+    var path_img_init = ''
     document.addEventListener('DOMContentLoaded', function() {
       const canvasPreview = document.getElementById('image-preview');
       const ctxPreview = canvasPreview.getContext('2d');
@@ -173,12 +174,14 @@
               canvasPreview.height = img.height;
               ctxPreview.drawImage(img, 0, 0);
             }
+            path_img_init = e.target.result 
             img.src = e.target.result;
           }
           reader.readAsDataURL(file);
         }
       });
 
+      
       const canvasDemo = document.getElementById('image-demo');
       const ctxDemo = canvasDemo.getContext('2d');
       const inputFileImgDemo = document.getElementById('input_file_img_demo');
@@ -209,7 +212,7 @@
 
         // Draw initial image
         const image = new Image();
-        image.src = 'img_init.png';
+        image.src = path_img_init
         image.onload = function() {
           ctxResult.drawImage(image, 0, 0);
 
