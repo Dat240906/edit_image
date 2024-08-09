@@ -376,18 +376,11 @@
         updateCanvas();
       });
 
-      document.querySelectorAll('#text-table .font-weight').forEach(input => {
-        input.addEventListener('input', function() {
-          this.nextElementSibling.textContent = this.value;
-          updateCanvas();
-        });
-      });
-
-      document.querySelectorAll('#text-table .font-opacity').forEach(input => {
-        input.addEventListener('input', function() {
-          this.nextElementSibling.textContent = this.value;
-          updateCanvas();
-        });
+      document.getElementById('text-table').addEventListener('input', function(event) {
+        if (event.target.classList.contains('font-weight') || event.target.classList.contains('font-opacity')) {
+          event.target.nextElementSibling.textContent = event.target.value;
+        }
+        updateCanvas();
       });
 
       document.querySelectorAll('#image-table .image-file').forEach(input => {
